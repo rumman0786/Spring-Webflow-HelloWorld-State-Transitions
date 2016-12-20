@@ -1,0 +1,35 @@
+apply plugin: 'jetty'
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+//verison = 1.0
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    compile group: 'org.springframework.webflow', name: 'spring-js', version: '2.4.0.RELEASE'
+    compile group: 'org.springframework.webflow', name: 'spring-webflow', version: '2.4.0.RELEASE'
+    compile group: 'org.springframework.webflow', name: 'spring-binding', version: '2.4.0.RELEASE'
+
+    compile group: 'org.springframework', name: 'spring-beans', version: '3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core', version: '3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version: '3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '3.0.5.RELEASE'
+}
+
+// Embeded Jetty for testing
+jettyRun {
+    contextPath = ""
+    httpPort = 8080
+}
+
+jettyRunWar {
+    contextPath = "spring4"
+    httpPort = 8080
+}
